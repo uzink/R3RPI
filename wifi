@@ -1,0 +1,12 @@
+Scan network
+sudo iwlist wlan0 scan | less #exit q
+
+Open the wpa-supplicant configuration file :
+
+sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
+
+network={
+    ssid="The_ESSID"
+    psk="Your_wifi_password"
+}
+

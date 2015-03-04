@@ -4,7 +4,7 @@ install.packages( c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'ply
 install.packages( c('reshape2'), repos='http://cran.revolutionanalytics.com')
 
 check packages have been installed
-packages()
+installed.packages()
 
 In Linux
 

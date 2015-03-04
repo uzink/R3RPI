@@ -1,12 +1,31 @@
 in R
 
-install.packages( c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr'), repos='http://cran.revolutionanalytics.com')
-install.packages( c('reshape2'), repos='http://cran.revolutionanalytics.com')
+install.packages( c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr'))
+install.packages( c('reshape2'))
 
 check packages have been installed
-installed.packages()
+c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','reshape2') %in% rownames(installed.packages())
 
 In Linux
 
 wget https://github.com/RevolutionAnalytics/rmr2/releases/download/3.3.1/rmr2_3.3.1.tar.gz
 sudo R CMD INSTALL rmr2_3.3.1.tar.gz
+
+lets test the configuration
+Start services
+
+su hduser
+
+Run:
+
+/opt/hadoop/bin/start-dfs.sh
+/opt/hadoop/bin/start-mapred.sh
+
+Run the jps command to checkl that all services started as supposed to:
+
+jps
+
+## copy local text file to hdfs
+bin/hadoop fs -copyFromLocal /Users/hadoop/try-hadoop/wordcount/data/*.txt wordcount/data/
+
+hadoop dfs -copyFromLocal /opt/hadoop/LICENSE.txt /license.txt

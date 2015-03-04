@@ -1,10 +1,10 @@
 in R
 
-install.packages( c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr'))
+install.packages( c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','caTools'))
 install.packages( c('reshape2'))
 
 check packages have been installed
-c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','reshape2') %in% rownames(installed.packages())
+c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','caTools','reshape2') %in% rownames(installed.packages())
 
 In Linux
 

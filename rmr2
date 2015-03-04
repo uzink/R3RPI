@@ -1,22 +1,30 @@
 in R
 
-install.packages( c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','caTools'))
+install.packages( c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','caTools',"rJava", "dplyr", "R.methodsS3", "Hmisc"))
 install.packages( c('reshape2'))
 
 check packages have been installed
-c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','caTools','reshape2') %in% rownames(installed.packages())
+c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','caTools',"rJava", "dplyr", "R.methodsS3", "Hmisc",'reshape2') %in% rownames(installed.packages())
 
 In Linux
 
 wget https://github.com/RevolutionAnalytics/rmr2/releases/download/3.3.1/rmr2_3.3.1.tar.gz
 sudo R CMD INSTALL rmr2_3.3.1.tar.gz
 
+ln -s /opt/hadoop/contrib/streaming/hadoop-streaming-1.2.1.jar /opt/hadoop/hadoop-streaming.jar
+
 Update the environment variables needed by rmr2
+
+edit R_HOME/R-3.1.2/etc/Renviron
+
 export HADOOP_HOME=/opt/hadoop/lib
 export HADOOP_CONF=/opt/hadoop/conf
 export HADOOP_CMD=/opt/hadoop/bin
-export HADOOP_STREAMING=/opt/hadoop/contrib/streaming/hadoop-streaming-1.2.1.jar
+export HADOOP_STREAMING=opt/hadoop/contrib/streaming/hadoop-streaming-1.2.1.jar
+export HADOOP_STREAMING=/opt/hadoop/hadoop-streaming.jar
 
+Sys.setenv("HADOOP_STREAMING"="/opt/hadoop/hadoop-streaming.jar")
+Sys.setenv("HADOOP_CMD"="HADOOP_CMD=/opt/hadoop/bin")
 To test 
 echo "$PATH"
 e.g. echo "$HADOOP_STREAMING"

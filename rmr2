@@ -1,0 +1,7 @@
+in R
+
+install.packages( c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr'), repos='http://cran.revolutionanalytics.com')
+install.packages( c('reshape2'), repos='http://cran.revolutionanalytics.com')
+
+wget https://github.com/RevolutionAnalytics/rmr2/releases/download/3.3.1/rmr2_3.3.1.tar.gz
+sudo R CMD INSTALL rmr2_3.3.1.tar.gz

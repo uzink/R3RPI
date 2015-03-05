@@ -6,6 +6,15 @@ install.packages( c('reshape2'))
 check packages have been installed
 c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','caTools',"rJava", "dplyr", "R.methodsS3", "Hmisc",'reshape2') %in% rownames(installed.packages())
 
+check dependencies
+pack <- available.packages()
+pack["ggplot2","Depends"]
+
+Install from source within R:
+
+packageurl <- "http://cran.r-project.org/src/contrib/Archive/ggplot2/ggplot2_0.9.1.tar.gz"
+install.packages(packageurl, repos=NULL, type="source")
+
 In Linux
 
 wget https://github.com/RevolutionAnalytics/rmr2/releases/download/3.3.1/rmr2_3.3.1.tar.gz

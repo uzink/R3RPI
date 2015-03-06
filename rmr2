@@ -1,38 +1,42 @@
 in R
+wget "http://cran.r-project.org/src/contrib/Archive/Rcpp/Rcpp_0.9.10.tar.gz"
+sudo R CMD INSTALL Rcpp_0.9.10.tar.gz
+sudo wget "http://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.tar.gz"
+sudo R CMD INSTALL plyr_1.8.tar.gz
 
-install.packages( c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','caTools',"rJava", "dplyr", "R.methodsS3", "Hmisc"))
+install.packages( c('RJSONIO', 'itertools', 'digest', 'functional', 'stringr','caTools'))
 install.packages( c('reshape2'))
 
+wget "http://cran.r-project.org/src/contrib/Archive/reshape2/reshape2_1.2.2.tar.gz"
+sudo R CMD INSTALL reshape2_1.2.2.tar.gz
+
 check packages have been installed
-c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','caTools',"rJava", "dplyr", "R.methodsS3", "Hmisc",'reshape2') %in% rownames(installed.packages())
+c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','caTools')  %in% rownames(installed.packages())
 
-check dependencies
-pack <- available.packages()
-pack["ggplot2","Depends"]
-
-Install from source within R:
-
-packageurl <- "http://cran.r-project.org/src/contrib/Archive/ggplot2/ggplot2_0.9.1.tar.gz"
-install.packages(packageurl, repos=NULL, type="source")
+,"rJava", "dplyr", "R.methodsS3", "Hmisc",'reshape2') %in% rownames(installed.packages())
 
 In Linux
 
 wget https://github.com/RevolutionAnalytics/rmr2/releases/download/3.3.1/rmr2_3.3.1.tar.gz
 sudo R CMD INSTALL rmr2_3.3.1.tar.gz
 
-ln -s /opt/hadoop/contrib/streaming/hadoop-streaming-1.2.1.jar /opt/hadoop/hadoop-streaming.jar
+wget --no-check-certificate 'https://github.com/RevolutionAnalytics/rmr2/blob/master/build/rmr2_2.3.0.tar.gz?raw=true'
+sudo R CMD INSTALL rmr2_2.3.0.tar.gz?raw=tru
 
-Update the environment variables needed by rmr2
+http://googledrive.com/host/
+wget 'https://drive.google.com/uc?export=download&id=0B1_sA-uX7YvBS0kwdjY1eTdGM2c'
 
-edit R_HOME/R-3.1.2/etc/Renviron
+#Update the environment variables needed by rmr2
+
+edit /etc/R/Renviron
 
 export HADOOP_HOME=/opt/hadoop/lib
 export HADOOP_CONF=/opt/hadoop/conf
 export HADOOP_CMD=/opt/hadoop/bin
 export HADOOP_STREAMING=opt/hadoop/contrib/streaming/hadoop-streaming-1.2.1.jar
-export HADOOP_STREAMING=/opt/hadoop/hadoop-streaming.jar
 
-Sys.setenv("HADOOP_STREAMING"="/opt/hadoop/hadoop-streaming.jar")
+
+Sys.setenv("HADOOP_STREAMING"="/opt/hadoop/contrib/streaming/hadoop-streaming-1.2.1.jar")
 Sys.setenv("HADOOP_CMD"="HADOOP_CMD=/opt/hadoop/bin")
 To test 
 echo "$PATH"

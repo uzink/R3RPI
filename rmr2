@@ -29,22 +29,26 @@ wget 'https://drive.google.com/uc?export=download&id=0B1_sA-uX7YvBS0kwdjY1eTdGM2
 #Update the environment variables needed by rmr2
 
 edit /etc/R/Renviron
+HADOOP_CMD=/opt/hadoop/bin/hadoop
+HADOOP_STREAMING=/opt/hadoop/contrib/streaming/hadoop-streaming-1.2.1.jar
 
-export HADOOP_HOME=/opt/hadoop/lib
-export HADOOP_CONF=/opt/hadoop/conf
-export HADOOP_CMD=/opt/hadoop/bin
-export HADOOP_STREAMING=opt/hadoop/contrib/streaming/hadoop-streaming-1.2.1.jar
+#to check change has been taken into account
+Sys.getenv("HADOOP_CMD")
 
-
-Sys.setenv("HADOOP_STREAMING"="/opt/hadoop/contrib/streaming/hadoop-streaming-1.2.1.jar")
-Sys.setenv("HADOOP_CMD"="HADOOP_CMD=/opt/hadoop/bin")
-To test 
-echo "$PATH"
-e.g. echo "$HADOOP_STREAMING"
-
-
+#HADOOP_CMD has to point to an actual command, not a directory. To find out enter at the shell prompt
+type -a hadoop
+#the first line returned by that command should be the value of HADOOP_CMD. 
+ 
 lets test the configuration
 Start services
+
+# Stop Hadoop from binding was binding to IPv6. 
+
+add export HADOOP_OPTS=-Djava.net.preferIPv4Stack=true 
+
+/opt/hadoop/conf/hadoop-env.sh
+
+export HADOOP_OPTS=-Djava.net.preferIPv4Stack=true
 
 su hduser
 
@@ -57,6 +61,15 @@ Run the jps command to checkl that all services started as supposed to:
 
 jps
 
+#check hadoop is running
+
+#pload sample files to HDFS (Feel free to grab any other textfile you like than license.txt):
+
+hadoop dfs -copyFromLocal /opt/hadoop/LICENSE.txt /license.txt
+
+#Run wordcount example:
+
+hadoop jar /opt/hadoop/hadoop-examples-1.2.1.jar wordcount /license.txt /license-out.txt
 
 sudo R
 

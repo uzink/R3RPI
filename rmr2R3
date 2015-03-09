@@ -1,0 +1,44 @@
+wget "http://cran.r-project.org/src/contrib/Archive/Rcpp/Rcpp_0.9.10.tar.gz"
+sudo R CMD INSTALL Rcpp_0.9.10.tar.gz
+sudo wget "http://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.tar.gz"
+sudo R CMD INSTALL plyr_1.8.tar.gz
+
+install.packages( c('Rcpp','plyr','RJSONIO','itertools', 'digest', 'functional', 'stringr','caTools'))
+install.packages('reshape2')
+
+check packages have been installed
+c('RJSONIO', 'itertools', 'digest', 'Rcpp', 'functional', 'plyr', 'stringr','caTools')  %in% rownames(installed.packages())
+
+wget https://github.com/RevolutionAnalytics/rmr2/releases/download/3.3.1/rmr2_3.3.1.tar.gz
+sudo R CMD INSTALL rmr2_3.3.1.tar.gz
+
+#Update the environment variables needed by rmr2
+
+#to find the Renviron file
+sudo find  / -type f -name "Renviron" -ls
+
+
+edit /usr/local/lib/R/etc/Renviron
+HADOOP_CMD=/opt/hadoop/bin/hadoop
+HADOOP_STREAMING=/opt/hadoop/contrib/streaming/hadoop-streaming-1.2.1.jar
+
+#to check change has been taken into account in R 
+Sys.getenv("HADOOP_CMD")
+
+#Run:
+
+/opt/hadoop/bin/start-dfs.sh
+/opt/hadoop/bin/start-mapred.sh
+
+#Run the jps command to checkl that all services started as supposed to:
+
+jps
+
+16640 JobTracker
+16832 Jps
+16307 NameNode
+16550 SecondaryNameNode
+16761 TaskTracker
+16426 DataNode
+
+

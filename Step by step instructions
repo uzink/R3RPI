@@ -10,7 +10,7 @@ cd R_HOME/
 sudo tar zxvf R-3.1.2.tar.gz
 cd R-3.1.2/
 sudo apt-get install gfortran libreadline6-dev libx11-dev libxt-dev
-sudo ./configure
+./configure --enable-R-shlib=yes #allows to install rstudio
 sudo make
 sudo make install
 R

@@ -3,12 +3,12 @@ http://stackoverflow.com/questions/28309891/install-r-3-1-2-on-wheezy-7-8-raspbi
 
 Step by step Instructions:
 
-sudo wget http://cran.rstudio.com/src/base/R-3/R-3.1.2.tar.gz
+sudo wget http://cran.rstudio.com/src/base/R-3/R-3.1.3.tar.gz
 sudo mkdir R_HOME
-sudo mv R-3.1.2.tar.gz R_HOME/
+sudo mv R-3.1.3.tar.gz R_HOME/
 cd R_HOME/
-sudo tar zxvf R-3.1.2.tar.gz
-cd R-3.1.2/
+sudo tar zxvf R-3.1.3.tar.gz
+cd R-3.1.3/
 sudo apt-get install gfortran libreadline6-dev libx11-dev libxt-dev
 ./configure --enable-R-shlib=yes #allows to install rstudio
 sudo make
